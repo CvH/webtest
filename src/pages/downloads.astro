@@ -1,0 +1,232 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const platforms = [
+  {
+    name: 'Raspberry Pi',
+    slug: 'raspberry-pi',
+    description: 'For Raspberry Pi 2, 3, 4, and 5 devices',
+    icon: 'raspberry-pi',
+    downloads: [
+      { name: 'Raspberry Pi 5', file: 'LibreELEC-RPi5.arm-12.2.1.img.gz', size: '156 MB' },
+      { name: 'Raspberry Pi 4', file: 'LibreELEC-RPi4.arm-12.2.1.img.gz', size: '148 MB' },
+      { name: 'Raspberry Pi 3', file: 'LibreELEC-RPi3.arm-12.2.1.img.gz', size: '142 MB' },
+      { name: 'Raspberry Pi 2', file: 'LibreELEC-RPi2.arm-12.2.1.img.gz', size: '138 MB' },
+    ],
+  },
+  {
+    name: 'Generic',
+    slug: 'generic',
+    description: 'For AMD, Intel, and NVIDIA x86_64 systems',
+    icon: 'generic',
+    downloads: [
+      { name: 'Generic x86_64', file: 'LibreELEC-Generic.x86_64-12.2.1.img.gz', size: '282 MB' },
+    ],
+  },
+  {
+    name: 'Allwinner',
+    slug: 'allwinner',
+    description: 'For Allwinner-based devices',
+    icon: 'allwinner',
+    downloads: [
+      { name: 'H6', file: 'LibreELEC-Allwinner-H6-12.2.1.img.gz', size: '145 MB' },
+      { name: 'H616', file: 'LibreELEC-Allwinner-H616-12.2.1.img.gz', size: '147 MB' },
+    ],
+  },
+  {
+    name: 'Rockchip',
+    slug: 'rockchip',
+    description: 'For Rockchip-based devices',
+    icon: 'rockchip',
+    downloads: [
+      { name: 'RK3328', file: 'LibreELEC-Rockchip-RK3328-12.2.1.img.gz', size: '152 MB' },
+      { name: 'RK3399', file: 'LibreELEC-Rockchip-RK3399-12.2.1.img.gz', size: '158 MB' },
+    ],
+  },
+  {
+    name: 'Amlogic',
+    slug: 'amlogic',
+    description: 'For Amlogic-based devices',
+    icon: 'amlogic',
+    downloads: [
+      { name: 'AMLGX', file: 'LibreELEC-AMLGX-12.2.1.img.gz', size: '165 MB' },
+    ],
+  },
+  {
+    name: 'NXP',
+    slug: 'nxp',
+    description: 'For NXP i.MX6 and i.MX8 devices',
+    icon: 'nxp',
+    downloads: [
+      { name: 'iMX6', file: 'LibreELEC-NXP-iMX6-12.2.1.img.gz', size: '142 MB' },
+      { name: 'iMX8', file: 'LibreELEC-NXP-iMX8-12.2.1.img.gz', size: '148 MB' },
+    ],
+  },
+];
+
+const usbCreator = {
+  windows: { name: 'Windows x64', file: 'LibreELEC.USB-SD.Creator-Win32-2.5.exe', size: '12.4 MB' },
+  macos: { name: 'macOS', file: 'LibreELEC.USB-SD.Creator-macOS-2.5.dmg', size: '14.2 MB' },
+  linux: { name: 'Linux 64-bit', file: 'LibreELEC.USB-SD.Creator-Linux-2.5.AppImage', size: '18.6 MB', note: 'not currently available' },
+};
+---
+
+<BaseLayout title="Downloads" description="Download LibreELEC for your device - Raspberry Pi, Generic x86_64, Allwinner, Rockchip, Amlogic, and NXP platforms.">
+  <!-- Hero Section -->
+  <section class="relative border-b border-border/50">
+    <div class="absolute inset-0 bg-grid opacity-50" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-primary/10 rounded-full blur-3xl opacity-30" />
+    
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Downloads</h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Get LibreELEC for your device. Choose your platform below to download the latest stable release.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USB-SD Creator Section -->
+  <section class="py-12 border-b border-border/50" id="usb-creator">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-card/50 to-card/50 p-6 lg:p-8">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
+          <!-- Info -->
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-semibold text-foreground">LibreELEC USB-SD Creator</h2>
+                <p class="text-sm text-muted-foreground">Version 1.5</p>
+              </div>
+            </div>
+            <p class="text-muted-foreground text-sm leading-relaxed mb-4">
+              The easiest way to create bootable USB or SD Card install media. Download the app, select your device and version, choose your drive, and write the image.
+            </p>
+            <a href="https://wiki.libreelec.tv/installation" target="_blank" rel="noopener noreferrer" class="text-sm text-primary hover:text-accent inline-flex items-center gap-1">
+              View installation guide
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Download Buttons -->
+          <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+            <a
+              href={`https://releases.libreelec.tv/${usbCreator.windows.file}`}
+              class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-muted hover:bg-muted/80 border border-border/50 transition-colors"
+            >
+              <svg class="w-5 h-5 text-muted-foreground" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+              </svg>
+              <span class="text-sm font-medium text-foreground">{usbCreator.windows.name}</span>
+              <span class="text-xs text-muted-foreground">({usbCreator.windows.size})</span>
+            </a>
+            <a
+              href={`https://releases.libreelec.tv/${usbCreator.macos.file}`}
+              class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-muted hover:bg-muted/80 border border-border/50 transition-colors"
+            >
+              <svg class="w-5 h-5 text-muted-foreground" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <span class="text-sm font-medium text-foreground">{usbCreator.macos.name}</span>
+              <span class="text-xs text-muted-foreground">({usbCreator.macos.size})</span>
+            </a>
+            <div class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-muted/50 border border-border/30 opacity-60 cursor-not-allowed">
+              <svg class="w-5 h-5 text-muted-foreground" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.504 0c-.155 0-.311.003-.467.008-3.377.096-5.855 2.086-7.404 4.186-1.557 2.112-2.485 4.704-2.485 7.003 0 2.299.928 4.891 2.485 7.003 1.549 2.1 4.027 4.09 7.404 4.186.156.005.312.008.467.008.155 0 .311-.003.467-.008 3.377-.096 5.855-2.086 7.404-4.186 1.557-2.112 2.485-4.704 2.485-7.003 0-2.299-.928-4.891-2.485-7.003-1.549-2.1-4.027-4.09-7.404-4.186-.156-.005-.312-.008-.467-.008zm5.993 15.498h-3.511v3.511h-1.488v-3.511H10.01v-1.488h3.488V10.498h1.488v3.512h3.511z"/>
+              </svg>
+              <span class="text-sm font-medium text-muted-foreground">{usbCreator.linux.name}</span>
+              <span class="text-xs text-muted-foreground italic">(not available)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manual Downloads Section -->
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-foreground mb-2">Manual Downloads</h2>
+        <p class="text-muted-foreground">
+          Download image files directly to flash with your preferred tool.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {platforms.map((platform) => (
+          <div class="group rounded-xl border border-border/50 bg-card/30 hover:border-primary/30 hover:bg-card/50 transition-all duration-200 overflow-hidden">
+            <div class="p-6">
+              <!-- Platform Header -->
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+                  {platform.icon === 'raspberry-pi' && (
+                    <svg class="w-7 h-7 text-[#c51a4a]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0a8.866 8.866 0 00-3.63.77c-.648.278-1.34.556-1.919 1.026-.432.35-.698.744-.784 1.269-.037.232-.01.427.088.618.1.197.256.367.433.506.17.133.352.238.525.355.04.027.073.054.092.099.018.044.01.089-.01.131a.4.4 0 01-.086.112c-.262.25-.5.524-.712.819-.42.579-.758 1.212-.999 1.888a8.854 8.854 0 00-.37 1.444c-.007.038-.009.08-.016.116-.026.129-.062.253-.104.377-.089.261-.193.515-.297.77a14.79 14.79 0 01-.32.736c-.107.234-.207.47-.276.717a3.04 3.04 0 00-.103.65c-.005.1.015.2.055.29.057.126.138.24.225.345a2.3 2.3 0 00.33.315c.127.103.264.194.4.286.067.045.133.09.195.141a.662.662 0 01.128.137c.03.046.04.1.032.151-.01.059-.04.11-.075.155a1.167 1.167 0 01-.137.143c-.19.175-.402.326-.602.492-.408.339-.794.706-1.101 1.145a3.43 3.43 0 00-.535 1.395c-.059.32-.077.67-.019 1.001.036.207.112.408.236.573.16.214.372.384.593.524.21.133.435.24.663.334.111.046.224.088.334.137.056.025.108.054.159.088a.4.4 0 01.091.08.203.203 0 01.04.107c.006.064-.016.12-.047.173a.656.656 0 01-.094.118c-.067.071-.145.13-.22.193-.303.251-.623.48-.886.773-.271.302-.478.663-.554 1.07-.048.255-.047.528.016.782.058.234.165.453.313.635.185.228.416.413.66.567.236.15.485.275.742.382a8.867 8.867 0 003.63.77c.632 0 1.246-.062 1.84-.178 1.16-.226 2.24-.67 3.2-1.288.96.618 2.04 1.062 3.2 1.288.594.116 1.208.178 1.84.178a8.866 8.866 0 003.63-.77c.257-.107.506-.232.742-.382.244-.154.475-.34.66-.567.148-.182.255-.401.313-.635.063-.254.064-.527.016-.782-.076-.407-.283-.768-.554-1.07-.263-.293-.583-.522-.886-.773-.075-.063-.153-.122-.22-.193a.656.656 0 01-.094-.118c-.031-.052-.053-.109-.047-.173a.203.203 0 01.04-.107.4.4 0 01.091-.08c.051-.034.103-.063.159-.088.11-.049.223-.091.334-.137.228-.094.453-.201.663-.334.221-.14.434-.31.593-.524.124-.165.2-.366.236-.573.058-.331.04-.681-.019-1.001a3.43 3.43 0 00-.535-1.395c-.307-.439-.693-.806-1.101-1.145-.2-.166-.412-.317-.602-.492a1.167 1.167 0 01-.137-.143c-.035-.045-.065-.096-.075-.155-.008-.051.002-.105.032-.151a.662.662 0 01.128-.137c.062-.051.128-.096.195-.141.136-.092.273-.183.4-.286a2.3 2.3 0 00.33-.315c.087-.105.168-.219.225-.345.04-.09.06-.19.055-.29a3.04 3.04 0 00-.103-.65c-.069-.247-.169-.483-.276-.717a14.79 14.79 0 01-.32-.736c-.104-.255-.208-.509-.297-.77a3.4 3.4 0 01-.104-.377c-.007-.036-.009-.078-.016-.116a8.854 8.854 0 00-.37-1.444 8.35 8.35 0 00-.999-1.888c-.212-.295-.45-.569-.712-.819a.4.4 0 01-.086-.112c-.02-.042-.028-.087-.01-.131.019-.045.052-.072.092-.099.173-.117.355-.222.525-.355.177-.139.333-.309.433-.506.098-.191.125-.386.088-.618-.086-.525-.352-.919-.784-1.269-.579-.47-1.271-.748-1.919-1.026A8.866 8.866 0 0012 0z"/>
+                    </svg>
+                  )}
+                  {platform.icon === 'generic' && (
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                  )}
+                  {(platform.icon !== 'raspberry-pi' && platform.icon !== 'generic') && (
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  )}
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-foreground">{platform.name}</h3>
+                  <p class="text-xs text-muted-foreground">{platform.description}</p>
+                </div>
+              </div>
+
+              <!-- Download Links -->
+              <div class="space-y-2">
+                {platform.downloads.map((download) => (
+                  <a
+                    href={`https://releases.libreelec.tv/${download.file}`}
+                    class="flex items-center justify-between p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group/link"
+                  >
+                    <div class="flex items-center gap-3">
+                      <svg class="w-4 h-4 text-muted-foreground group-hover/link:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      <span class="text-sm font-medium text-foreground">{download.name}</span>
+                    </div>
+                    <span class="text-xs text-muted-foreground">{download.size}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SHA256 Note -->
+  <section class="py-8 border-t border-border/50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-3 p-4 rounded-lg bg-muted/30 border border-border/50">
+        <svg class="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <p class="text-sm text-muted-foreground">
+            <strong class="text-foreground">SHA256 Verification:</strong> Append <code class="text-primary bg-muted px-1.5 py-0.5 rounded text-xs font-mono">?mirrorlist</code> to download links to see the file SHA256 hash, e.g., <code class="text-primary bg-muted px-1.5 py-0.5 rounded text-xs font-mono break-all">https://releases.libreelec.tv/LibreELEC-RPi5.arm-12.2.1.img.gz?mirrorlist</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

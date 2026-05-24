@@ -1,0 +1,125 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const nightlyBuilds = [
+  { platform: 'Raspberry Pi 5', arch: 'aarch64', status: 'passing' },
+  { platform: 'Raspberry Pi 4', arch: 'aarch64', status: 'passing' },
+  { platform: 'Generic x86_64', arch: 'x86_64', status: 'passing' },
+  { platform: 'Allwinner H6', arch: 'aarch64', status: 'passing' },
+  { platform: 'Rockchip RK3399', arch: 'aarch64', status: 'pending' },
+  { platform: 'Amlogic AMLGX', arch: 'aarch64', status: 'passing' },
+];
+---
+
+<BaseLayout title="Nightly Builds" description="Download nightly development builds of LibreELEC. Test new features before they're released.">
+  <!-- Hero Section -->
+  <section class="relative border-b border-border/50">
+    <div class="absolute inset-0 bg-grid opacity-50" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-warning/10 rounded-full blur-3xl opacity-30" />
+    
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warning/10 border border-warning/30 text-warning text-sm font-medium mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          Development Builds
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Nightly Builds</h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Test the latest development builds with new features and fixes. These builds are automatically generated and may contain bugs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warning Banner -->
+  <section class="py-6 border-b border-border/50 bg-warning/5">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-lg bg-warning/20 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-foreground mb-1">Important Notice</h3>
+          <p class="text-sm text-muted-foreground">
+            Nightly builds are development snapshots that may contain bugs or incomplete features. They are intended for testing purposes only and should not be used on production systems. Always backup your data before installing a nightly build.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Build Status -->
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-foreground mb-8">Build Status</h2>
+      
+      <div class="rounded-xl border border-border/50 overflow-hidden">
+        <table class="w-full">
+          <thead class="bg-muted/50">
+            <tr>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-foreground">Platform</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-foreground">Architecture</th>
+              <th class="px-6 py-4 text-left text-sm font-semibold text-foreground">Status</th>
+              <th class="px-6 py-4 text-right text-sm font-semibold text-foreground">Download</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border/50">
+            {nightlyBuilds.map((build) => (
+              <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-6 py-4">
+                  <span class="font-medium text-foreground">{build.platform}</span>
+                </td>
+                <td class="px-6 py-4">
+                  <code class="text-sm text-primary bg-muted px-2 py-1 rounded">{build.arch}</code>
+                </td>
+                <td class="px-6 py-4">
+                  <span class:list={[
+                    "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium",
+                    build.status === 'passing' ? "bg-success/10 text-success" : "bg-warning/10 text-warning"
+                  ]}>
+                    <span class:list={[
+                      "w-1.5 h-1.5 rounded-full",
+                      build.status === 'passing' ? "bg-success" : "bg-warning"
+                    ]} />
+                    {build.status === 'passing' ? 'Passing' : 'Pending'}
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <a
+                    href="https://test.libreelec.tv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors"
+                  >
+                    Download
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="https://test.libreelec.tv"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground hover:bg-muted transition-colors text-sm font-medium"
+        >
+          View All Nightly Builds
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

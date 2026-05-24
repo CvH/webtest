@@ -1,0 +1,154 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const sponsors = [
+  { name: 'Community Supporter', amount: '$5/month', benefits: ['Name on supporters page', 'Discord supporter role'] },
+  { name: 'Bronze Sponsor', amount: '$25/month', benefits: ['Previous tier benefits', 'Early access to releases', 'Priority support'] },
+  { name: 'Silver Sponsor', amount: '$100/month', benefits: ['Previous tier benefits', 'Logo on website', 'Monthly newsletter mention'] },
+  { name: 'Gold Sponsor', amount: '$500/month', benefits: ['Previous tier benefits', 'Featured sponsor placement', 'Dedicated support channel'] },
+];
+---
+
+<BaseLayout title="Sponsor" description="Support LibreELEC development. Your contributions help us maintain and improve the project.">
+  <!-- Hero Section -->
+  <section class="relative border-b border-border/50">
+    <div class="absolute inset-0 bg-grid opacity-50" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-primary/10 rounded-full blur-3xl opacity-30" />
+    
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-6">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Support LibreELEC</h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          LibreELEC is a volunteer-driven open source project. Your support helps us maintain infrastructure, develop new features, and support more devices.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main CTA -->
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-card/50 to-card/50 p-8 lg:p-12 text-center">
+        <h2 class="text-2xl lg:text-3xl font-bold text-foreground mb-4">Donate via Open Collective</h2>
+        <p class="text-muted-foreground max-w-xl mx-auto mb-8">
+          Open Collective provides transparent funding for open source projects. See how your donations are used and track project expenses.
+        </p>
+        <a
+          href="https://opencollective.com/libreelec/donate"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-primary text-primary-foreground hover:bg-accent transition-colors text-lg font-semibold"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21.86 12.48a9.93 9.93 0 0 1-1.15 4.65l-2.85-1.65a7 7 0 0 0 0-6.96l2.85-1.65a9.93 9.93 0 0 1 1.15 4.65v.96zm-4.47 7.53l-2.85-1.65a7 7 0 0 1-6.08 0l-1.65 2.85a9.93 9.93 0 0 0 8.93 0l1.65-2.85v-1.35zm-7.53 1.47l-1.65-2.85a7 7 0 0 1-3.5-6.08H2a9.93 9.93 0 0 0 4.97 8.93l2.89-1.65v1.65zM2.14 11.52a9.93 9.93 0 0 1 1.15-4.65l2.85 1.65a7 7 0 0 0 0 6.96l-2.85 1.65a9.93 9.93 0 0 1-1.15-4.65v-.96zm4.47-7.53l2.85 1.65a7 7 0 0 1 6.08 0l1.65-2.85a9.93 9.93 0 0 0-8.93 0L6.61 4v1.35zm7.53-1.47l1.65 2.85a7 7 0 0 1 3.5 6.08H22a9.93 9.93 0 0 0-4.97-8.93l-2.89 1.65V2.52z"/>
+          </svg>
+          Donate to Our Collective
+        </a>
+        <p class="mt-6 text-sm text-muted-foreground">
+          One-time and recurring donations accepted
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Support -->
+  <section class="py-12 lg:py-16 border-t border-border/50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl lg:text-3xl font-bold text-foreground mb-4">Why Support Us?</h2>
+        <p class="text-muted-foreground max-w-2xl mx-auto">
+          Your contributions directly impact the project and its community.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2">Infrastructure</h3>
+          <p class="text-sm text-muted-foreground">
+            Server costs, build systems, and download mirrors to serve millions of users worldwide.
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2">Hardware</h3>
+          <p class="text-sm text-muted-foreground">
+            Development boards and devices for testing, ensuring compatibility across all supported platforms.
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground mb-2">Development</h3>
+          <p class="text-sm text-muted-foreground">
+            Continuous improvements, new features, security updates, and support for emerging hardware.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alternative Ways to Help -->
+  <section class="py-12 lg:py-16 border-t border-border/50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl lg:text-3xl font-bold text-foreground mb-4">Other Ways to Contribute</h2>
+        <p class="text-muted-foreground max-w-2xl mx-auto">
+          Not able to donate? There are many other ways to help the project.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="https://github.com/LibreELEC" target="_blank" rel="noopener noreferrer" class="p-6 rounded-xl border border-border/50 bg-card/30 hover:border-primary/30 transition-colors group">
+          <svg class="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors mb-4" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+          <h3 class="font-semibold text-foreground mb-1">Code</h3>
+          <p class="text-sm text-muted-foreground">Contribute to our GitHub repositories</p>
+        </a>
+
+        <a href="https://wiki.libreelec.tv" target="_blank" rel="noopener noreferrer" class="p-6 rounded-xl border border-border/50 bg-card/30 hover:border-primary/30 transition-colors group">
+          <svg class="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <h3 class="font-semibold text-foreground mb-1">Documentation</h3>
+          <p class="text-sm text-muted-foreground">Improve our wiki and guides</p>
+        </a>
+
+        <a href="https://forum.libreelec.tv" target="_blank" rel="noopener noreferrer" class="p-6 rounded-xl border border-border/50 bg-card/30 hover:border-primary/30 transition-colors group">
+          <svg class="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+          </svg>
+          <h3 class="font-semibold text-foreground mb-1">Community</h3>
+          <p class="text-sm text-muted-foreground">Help users in our forums</p>
+        </a>
+
+        <div class="p-6 rounded-xl border border-border/50 bg-card/30">
+          <svg class="w-8 h-8 text-muted-foreground mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+          <h3 class="font-semibold text-foreground mb-1">Spread the Word</h3>
+          <p class="text-sm text-muted-foreground">Tell others about LibreELEC</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

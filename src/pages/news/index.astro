@@ -1,0 +1,78 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import NewsCard from '@/components/NewsCard.astro';
+
+// Sample news data
+const allNews = [
+  {
+    title: 'LibreELEC (Omega) 12.2.1',
+    date: '2025-11-03',
+    excerpt: 'LibreELEC 12.2.1 with Kodi (Omega) v21.3 is released! This update includes Kodi updated to 21.3, Linux kernel updates, and several small bug fixes.',
+    slug: 'libreelec-omega-12-2-1',
+  },
+  {
+    title: 'LibreELEC (Omega) 12.2',
+    date: '2025-08-15',
+    excerpt: 'LibreELEC 12.2 with Kodi (Omega) v21.2+ is released! This release brings performance improvements and enhanced hardware support.',
+    slug: 'libreelec-omega-12-2',
+  },
+  {
+    title: 'LibreELEC (Omega) 12.0.2',
+    date: '2025-01-22',
+    excerpt: 'LibreELEC 12.0.2 with Kodi (Omega) v21.2 has been released! Bug fixes and stability improvements for all supported platforms.',
+    slug: 'libreelec-omega-12-0-2',
+  },
+  {
+    title: 'LibreELEC USB-SD Creator v1.5',
+    date: '2024-10-05',
+    excerpt: 'LibreELEC USB-SD Creator v1.5 is available! New features include improved device detection and support for larger storage media.',
+    slug: 'libreelec-usb-sd-creator-v1-5',
+  },
+  {
+    title: 'LibreELEC (Omega) 12.0.1',
+    date: '2024-08-26',
+    excerpt: 'LibreELEC 12.0.1 with Kodi (Omega) v21.1 has been released! This maintenance release addresses several issues reported by the community.',
+    slug: 'libreelec-omega-12-0-1',
+  },
+  {
+    title: 'LibreELEC (Omega) 12.0.0',
+    date: '2024-05-15',
+    excerpt: 'LibreELEC 12.0.0 with Kodi (Omega) v21.0 marks the beginning of a new chapter. Major platform updates and new features await.',
+    slug: 'libreelec-omega-12-0-0',
+  },
+];
+---
+
+<BaseLayout title="News" description="Stay updated with the latest LibreELEC releases, announcements, and project news.">
+  <!-- Hero Section -->
+  <section class="relative border-b border-border/50">
+    <div class="absolute inset-0 bg-grid opacity-50" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-primary/10 rounded-full blur-3xl opacity-30" />
+    
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">News</h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Stay updated with releases, announcements, and project updates from the LibreELEC team.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Grid -->
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {allNews.map((item, index) => (
+          <NewsCard
+            title={item.title}
+            date={item.date}
+            excerpt={item.excerpt}
+            slug={item.slug}
+            featured={index === 0}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,137 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// This would typically be dynamic - using static data for demo
+const post = {
+  title: 'LibreELEC (Omega) 12.2.1',
+  date: '2025-11-03',
+  author: 'LibreELEC',
+  readTime: '5 mins read',
+};
+
+const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={post.title} description="LibreELEC 12.2.1 with Kodi (Omega) v21.3 is released!">
+  <!-- Article Header -->
+  <section class="relative border-b border-border/50">
+    <div class="absolute inset-0 bg-grid opacity-50" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-primary/10 rounded-full blur-3xl opacity-30" />
+    
+    <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center">
+        <div class="flex items-center justify-center gap-3 text-sm text-muted-foreground mb-6">
+          <span>Posted by {post.author}</span>
+          <span class="w-1 h-1 rounded-full bg-muted-foreground" />
+          <time>{formattedDate}</time>
+          <span class="w-1 h-1 rounded-full bg-muted-foreground" />
+          <span>{post.readTime}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">{post.title}</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="py-12 lg:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="prose">
+        <p>LibreELEC 12.2.1 with Kodi (Omega) v21.3 is released!</p>
+        
+        <p>The release contains an update to Kodi Omega 21.3.</p>
+
+        <h2>CHANGES SINCE 12.2.0</h2>
+        
+        <ul>
+          <li>Kodi: updated to 21.3</li>
+          <li>linux: update to 6.16.12 (RPi2-5 6.12.56)</li>
+          <li>several small updates and fixes</li>
+        </ul>
+
+        <h3>Generic-Legacy nVidia Changes</h3>
+        
+        <p>The nVidia Legacy 340.xx driver remained usable for six years after nVidia discontinued support, but it no longer compiles with the latest Xorg release so has been dropped from the Generic-Legacy image for LibreELEC 12.2 and the future 13.0 release. This impacts older nVidia cards, which are unfortunately the majority of active nVidia installations. We have investigated 'Nouveau' and may add support to the main Generic image in the future to assist Lakka retrogaming, but it creates more problems than it solves for video playback and is not a solution for LibreELEC use. Future nVidia GPU support remains a grey area and we continue our long-running advice to avoid purchasing nVidia GPU cards for LibreELEC use.</p>
+
+        <h3>Tvheadend 4.3</h3>
+        
+        <p>Tvheadend developers declared v4.3 to be a stable rolling release some time ago and v4.2 has not been maintained or supported since 2019 so v4.2 is not available from the LibreELEC 12.2 repo and users are advised to move to Tvheadend v4.3. There is no direct update path from v4.2 to v4.3 so users will need to install v4.3 and configure a new installation. Issues with v4.3 should ideally be reported to Tvheadend developers via their forum (with detailed logs and info) but if reported in our forum we will do our best to assist too.</p>
+
+        <h3>NXP (iMX6/iMX8) and Qualcomm</h3>
+        
+        <p>Limited support for iMX8 and Qualcomm chips was added in 2018 to assist the early stages of Kodi GBM/V4L2 development. They are mostly used with industrial hardware designs and tablet devices and this reflects in no active LibreELEC installs. iMX6 was used widely in the past, but there are now few active installs, and those are using self-built images. Support remains part of our codebase but we have stopped building and releasing official images.</p>
+
+        <h2>UPDATING</h2>
+        
+        <p>Users with 12.0 installs, or 11.0 installs on x86_64 hardware, can manually update as normal using the LibreELEC settings add-on or by placing an update file in the /storage/.update folder.</p>
+
+        <p>Users with 11.x or 10.x installs on ARM hardware need to read below:</p>
+
+        <ul>
+          <li>64-bit capable ARM SoC devices including Raspberry Pi 4/5 have switched from 'arm' to 'aarch64' userspace. Manual update in LibreELEC settings will not list LibreELEC 12.2 releases as there are no arm images (only aarch64). You can <a href="https://wiki.libreelec.tv/support/update#manual-update">manually update</a> by placing a LibreELEC 12 release file (.tar or .img.gz) in /storage/.update and rebooting.</li>
+          <li>If using Widevine to access DRM protected streaming services (Prime, Netflix, etc.) the Widevine CDN folder in /storage/.kodi/cdm must be deleted first as the existing arm libraries do not work on aarch64 systems. On first use after deletion new aarch64 Widevine libraries will be downloaded and installed.</li>
+          <li>If using Docker containers via LinuxServer.io add-ons the arch change should be handled automatically. If using containers installed directly from the console: arm containers must be removed before updating as they will not run on aarch64. After updating you can (re)install aarch64 (arm64) compatible versions of your containers.</li>
+        </ul>
+
+        <p>Users with 9.0 or older installs must perform a clean install due to the Python 3 changes introduced since LibreELEC 10.x (Kodi v19).</p>
+
+        <h2>BACKUPS</h2>
+        
+        <p>Kodi supports upgrades not downgrades. Create a backup BEFORE upgrading else rolling back to the previous release can be complicated.</p>
+
+        <h2>SUPPORT</h2>
+        
+        <p>Project staff are available in the <a href="https://forum.libreelec.tv">forum</a> to answer questions and provide advice. If you have a problem, technical issues are best accompanied by system and Kodi debug logs - help us to help you.</p>
+
+        <p>Enjoy! :)</p>
+
+        <p><a href="/downloads">** Click here to go to the download page **</a></p>
+
+        <p>Please send donations to our <a href="https://opencollective.com/libreelec">Open Collective</a> account or use the button below.</p>
+
+        <div class="not-prose my-8">
+          <a
+            href="https://opencollective.com/libreelec/donate"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-accent transition-colors font-medium"
+          >
+            Donate to our Collective
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </a>
+        </div>
+
+        <h2>SHA256</h2>
+        
+        <p>Append <code>?mirrorlist</code> to download links to see the file SHA256 hash, e.g. <code>https://releases.libreelec.tv/LibreELEC-RPi5.arm-12.2.1.img.gz?mirrorlist</code>.</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-12 pt-8 border-t border-border/50 flex items-center justify-between">
+        <a
+          href="/news"
+          class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to News
+        </a>
+        <a
+          href="/downloads"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-accent transition-colors text-sm font-medium"
+        >
+          Download Now
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

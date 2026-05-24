@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  excerpt: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const { title, date, excerpt, slug, featured = false } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class:list={[
+  "group relative flex flex-col rounded-xl border border-border/50 bg-card/50 overflow-hidden transition-all duration-300",
+  "hover:border-primary/30 hover:bg-card hover:shadow-lg hover:shadow-primary/5",
+  featured ? "md:col-span-2 md:flex-row" : ""
+]}>
+  <!-- Decorative gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+  
+  <div class:list={[
+    "relative p-6 flex flex-col",
+    featured ? "md:flex-1 md:p-8" : ""
+  ]}>
+    <!-- Date -->
+    <time class="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
+      {formattedDate}
+    </time>
+    
+    <!-- Title -->
+    <h3 class:list={[
+      "font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-200",
+      featured ? "text-xl md:text-2xl" : "text-lg"
+    ]}>
+      <a href={`/news/${slug}`} class="after:absolute after:inset-0">
+        {title}
+      </a>
+    </h3>
+    
+    <!-- Excerpt -->
+    <p class:list={[
+      "text-muted-foreground leading-relaxed flex-1",
+      featured ? "text-base" : "text-sm"
+    ]}>
+      {excerpt}
+    </p>
+    
+    <!-- Read More -->
+    <div class="mt-4 flex items-center gap-2 text-sm font-medium text-primary">
+      <span>Read more</span>
+      <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+  </div>
+</article>
