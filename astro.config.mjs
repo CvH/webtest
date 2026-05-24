@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://libreelec.tv',
   integrations: [sitemap()],
   vite: {
-    plugins: [tailwindcss({ tsconfigPaths: true })],
+    plugins: [tailwindcss()],
+    resolve: {
+      tsconfigPaths: true,
+    },
   },
 });
